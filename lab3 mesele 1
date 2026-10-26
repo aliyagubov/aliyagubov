@@ -1,0 +1,24 @@
+pharmacy_queue = deque()
+ 
+ 
+def add_customer(name, medicine):
+    pharmacy_queue.append((name, medicine))
+    print(f"+ {name} növbəyə əlavə olundu (dərman: {medicine})")
+ 
+ 
+def serve_customer():
+    if not pharmacy_queue:
+        print("Növbə boşdur!")
+        return None
+    name, medicine = pharmacy_queue.popleft()
+    print(f"- {name} dərmanını ({medicine}) aldı və növbədən çıxdı")
+    return name, medicine
+ 
+ 
+def show_customers():
+    if not pharmacy_queue:
+        print("Növbə boşdur!")
+        return
+    print("Aptek növbəsi:")
+    for i, (name, medicine) in enumerate(pharmacy_queue, 1):
+        print(f"  {i}. {name} — {medicine}")
