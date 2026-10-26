@@ -1,0 +1,49 @@
+elderly_queue = deque()  
+normal_queue = deque()   
+ 
+ 
+def add_passenger(name, age):
+    if age > 65:
+        elderly_queue.append((name, age))
+        print(f"+ {name} ({age}) prioritet növbəsinə əlavə olundu")
+    else:
+        normal_queue.append((name, age))
+        print(f"+ {name} ({age}) normal növbəyə əlavə olundu")
+ 
+ 
+def board_passenger():
+    if elderly_queue:
+        name, age = elderly_queue.popleft()
+    elif normal_queue:
+        name, age = normal_queue.popleft()
+    else:
+        print("Dayanacaqda sərnişin yoxdur!")
+        return None
+    print(f"- {name} ({age}) avtobusa mindi")
+    return name, age
+ 
+ 
+def show_passengers():
+    if not elderly_queue and not normal_queue:
+        print("Dayanacaqda sərnişin yoxdur!")
+        return
+    print("Prioritet növbəsi (65+):")
+    for name, age in elderly_queue:
+        print(f"  {name} — {age}")
+    print("Normal növbə:")
+    for name, age in normal_queue:
+        print(f"  {name} — {age}")
+ 
+ 
+ 
+    print("\n===== Məsələ 2 =====")
+    add_passenger("Rəşad", 30)
+    add_passenger("Fatma xala", 72)
+    add_passenger("Aynur", 25)
+    add_passenger("Həsən kişi", 68)
+    show_passengers()
+    board_passenger()   # Fatma xala
+    board_passenger()   # Həsən kişi
+    board_passenger()   # Rəşad
+    show_passengers()
+ 
