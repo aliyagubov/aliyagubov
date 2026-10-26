@@ -22,3 +22,11 @@ def show_customers():
     print("Aptek növbəsi:")
     for i, (name, medicine) in enumerate(pharmacy_queue, 1):
         print(f"  {i}. {name} — {medicine}")
+if __name__ == "__main__":
+    print("===== Məsələ 1 =====")
+    add_customer("Əli", "Parasetamol")
+    add_customer("Leyla", "Aspirin")
+    add_customer("Nigar", "Vitamin C")
+    show_customers()
+    serve_customer()
+    show_customers()
